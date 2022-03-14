@@ -1,0 +1,67 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Digital Clock</title>
+
+    <style>
+        body{
+            background-color: black;
+        }
+        #clock{
+            position:fixed;
+            top:50%;
+            left:50%;
+            color:red;
+            font-size:64px;
+            font-family: 'Orbitron', sans-serif;
+            transform:translate(-50%,-50%);
+            text-shadow:2px 2px 50px white;
+        }
+        h1{
+            text-transform: uppercase;
+            color: #fff;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Digital Clock</h1>
+        <div id="clock"></div>
+    </div>
+</body>
+<script>
+    function digitalClock(){
+        var d=new Date();
+        var h=d.getHours();
+        var m=d.getMinutes();
+        var s=d.getSeconds();
+        var session="AM";
+        if(h>12){
+            h=h-12;
+            session="PM";
+        }
+        h=(h<10)? "0"+h:h;
+        if(m<10){
+            m="0"+m;
+        }
+        if(s<10){
+            s="0"+s;
+        }
+        var result=h+":"+m+":"+s+" "+session;
+        setTimeout(digitalClock,1000);
+        document.getElementById("clock").innerHTML=result;
+    }
+    digitalClock();
+
+</script>
+
+</html>
